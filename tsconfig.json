@@ -11,6 +11,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "paths": {
+      "ng-multiselect-angular": [
+        "dist/ng-multiselect-angular/ng-multiselect-angular",
+        "dist/ng-multiselect-angular"
+      ]
+    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,

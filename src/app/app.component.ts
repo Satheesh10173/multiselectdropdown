@@ -6,107 +6,28 @@ import { IListItem, ISelectSettings } from './model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnChanges {
-  title = 'multi';
-  public isOpen: boolean = false;
-  public isSearch: boolean = true;
-  public savedList:any[]=[];
-  public searchData: any = '';
-  public isCheckedAll: boolean = false;
-  @Input() dropdownList:IListItem[]=[];
-  @Input() selectSettings: ISelectSettings = {
+export class AppComponent implements OnInit {
+  public list:any[]=[];
+  public settings = {
     isSearch: false,
-    placeholder: 'Select',
-    isSelectAll: false,
-    isShowImage: false,
-    limit: 0,
-    isLimit: true,
+    placeholder: 'Select Language',
+    isSelectAll: true,
+    isShowImage: true,
     singleSelect: true
   };
-  @HostListener('document:click', ['$event']) onDocumentClick(event:any) {
-    this.isOpen = false;
-  };
-  @Output('onSelectAll')
-  onSelectAll: EventEmitter<Array<IListItem>> = new EventEmitter<Array<any>>();
-  @Output('onSelectAll')
-  onSelect: EventEmitter<IListItem> = new EventEmitter<IListItem>();
   constructor() {
   }
   ngOnInit(): void {
-    
+    this.list = [
+      { id: 1, name: 'Mumbai', image: 'assets/images/baby.jpg', checked: true},
+      { id: 2, name: 'Bangaluru', image: 'assets/images/baby.jpg', checked: true },
+      { id: 3, name: 'Pune', image: 'assets/images/baby.jpg', checked: false},
+      { id: 4, name: 'Navsari', image: 'assets/images/baby.jpg', checked: true},
+      { id: 5, name: 'New Delhi', image: 'assets/images/baby.jpg', checked: true},
+      { id: 6, name: 'New Delhisd', image: 'assets/images/baby.jpg', checked: true},
+      { id: 7, name: 'New Delhiwer', image: 'assets/images/baby.jpg', checked: true},
+      { id: 8, name: 'New Delhifhg', image: 'assets/images/baby.jpg', checked: true},
+      { id: 9, name: 'New Delhikjkh', image: 'assets/images/baby.jpg', checked: true}
+    ];
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    const change:any = changes;
-    const currentChange = JSON.stringify(change.dropdownList.currentValue);
-    const previewsChange = JSON.stringify(change.dropdownList.previousValue);
-    if(currentChange !== previewsChange) {
-      if(change.dropdownList.currentValue.length) {
-        if(!this.selectSettings.singleSelect) {
-        this.savedList = change.dropdownList.currentValue.filter((x:IListItem) => x.checked === true);
-        if(this.savedList.length === this.dropdownList.length) {
-          this.isCheckedAll = true;
-        }   
-      } else {
-        this.savedList.push(change.dropdownList.currentValue.find((x:IListItem) => x.checked === true));
-      }
-      }
-    }
-  }
-  public onClickArrow(value:boolean) {
-    this.isOpen = value === true ? false : true;
-    console.log('this.isOpen', this.isOpen);
-  }
-
-  public onCheckChange(checked: any, value: any) {
-    if(!this.selectSettings.singleSelect) {
-    const data = this.savedList.find((x) => x.id === value.id);
-    if(checked){
-      if(this.savedList.length && !data) {
-        value.checked = true;
-        this.savedList.push(value);
-      } else if (!this.savedList.length){
-        value.checked = true;
-        this.savedList.push(value);
-      }
-    } else if(!checked && value) {
-      value.checked = false;
-      this.savedList.splice(this.savedList.findIndex((d) => d.id === value.id), 1);
-    }
-    this.isCheckedAll = (this.savedList.length === this.dropdownList.length) ? true : false;
-    this.onSelect.emit(value);
-  } else {
-    this.savedList = [value];
-    this.onSelect.emit(value);
-  }
-  }
-
-  public onRemove(index: number, value:any) {
-    this.savedList.splice(index, 1);
-    const data = this.dropdownList.find((s) => s.id === value.id);
-    if (data) {
-      data.checked = false;
-      this.dropdownList = this.dropdownList.map((a) => ({...a}));
-    }
-    this.isCheckedAll = (this.savedList.length === this.dropdownList.length) ? true : false;
-  }
-
-  public onCheckAllChange(check:boolean) {
-    if(check) {
-      this.isCheckedAll = true;
-      for (const it of this.dropdownList) {
-        const data = this.savedList.find((d) => d.id === it.id);
-        if(!data) {
-          it.checked = true;
-          this.savedList.push(it);
-        }
-      }
-    } else {
-      this.isCheckedAll = false;
-      this.savedList = [];
-      this.dropdownList.forEach((x) => x.checked = false);
-    }
-    this.dropdownList = this.dropdownList.map((a) => ({...a}));
-    this.onSelectAll.emit(this.savedList);
-  }
-
 }

@@ -105,6 +105,37 @@
           }
         }
       }
+    },
+    "ng-multiselect-angular": {
+      "projectType": "library",
+      "root": "projects/ng-multiselect-angular",
+      "sourceRoot": "projects/ng-multiselect-angular/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-multiselect-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-multiselect-angular/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-multiselect-angular/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-multiselect-angular/src/test.ts",
+            "tsConfig": "projects/ng-multiselect-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-multiselect-angular/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "multi"
