@@ -10,10 +10,12 @@ export class AppComponent implements OnInit {
   public list:any[]=[];
   public settings = {
     isSearch: false,
-    placeholder: 'Select Language',
+    placeholder: 'Select',
     isSelectAll: true,
-    isShowImage: true,
-    singleSelect: true
+    isShowImage: false,
+    singleSelect: false,
+    isCount:true,
+    count: 3
   };
   constructor() {
   }

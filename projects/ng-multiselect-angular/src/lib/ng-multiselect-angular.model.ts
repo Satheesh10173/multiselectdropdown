@@ -5,7 +5,9 @@ export interface ISelectSettings {
     isShowImage?: boolean,
     limit?: number,
     isLimit?: boolean,
-    singleSelect: boolean
+    singleSelect: boolean,
+    isCount?: boolean,
+    count?: number,
     
 }
 

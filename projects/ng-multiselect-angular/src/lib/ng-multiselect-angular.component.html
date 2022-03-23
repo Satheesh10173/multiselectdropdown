@@ -2,12 +2,19 @@
     <div class="container-box">
       <span *ngIf="savedList.length == 0" class="place-holder">{{selectSettings.placeholder}}</span>
       <div class="container-list" *ngFor="let list of savedList; let i=index">
-        <div class="container-list-items" [ngClass]="selectSettings.isShowImage == true ? '' : 'image-hide'">
-          <span *ngIf="selectSettings.isShowImage" class="c_image"><img  [src]="list.image" alt="Girl in a jacket" width="100" height="100"></span>
+        <div *ngIf="!selectSettings.singleSelect" class="container-list-items" [ngClass]="selectSettings.isShowImage == true ? '' : 'image-hide'">
+          <span *ngIf="selectSettings.isShowImage" class="c_image"><img  [src]="list.image" alt="image" width="100" height="100"></span>
           {{list.name}}<span *ngIf="!selectSettings.singleSelect" (click)="onRemove(i, list)" class="close"></span>
         </div>
+        <!-- <div *ngIf="selectSettings.isCount && this.selectSettings.count && this.selectSettings.count < this.savedList.length && showCount <= i">
+            <div *ngIf="!selectSettings.singleSelect" class="container-list-items" [ngClass]="selectSettings.isShowImage == true ? '' : 'image-hide'">
+                <span *ngIf="selectSettings.isShowImage" class="c_image"><img  [src]="list.image" alt="image" width="100" height="100"></span>
+                {{list.name}}<span *ngIf="!selectSettings.singleSelect" (click)="onRemove(i, list)" class="close"></span>
+              </div>
+        </div> -->
       </div>
       <span (click)="onClickArrow(isOpen)" [ngClass]="isOpen == false ? 'arrow' : 'arrow1'"></span>
+      <!-- <span *ngIf="selectSettings.isCount && this.selectSettings.count && this.selectSettings.count < this.savedList.length" class="c-count">+{{showCount}}</span> -->
     </div>
     <div *ngIf="selectSettings.isSelectAll && !selectSettings.singleSelect" class="selectall-container" (click)="onCheckAllChange(!isCheckedAll)" [ngClass]="isOpen == true ? 'searchOpen' : 'searchClose'">
       <input type="checkbox" [checked]="isCheckedAll" value="Select All" class="list-checkall"
