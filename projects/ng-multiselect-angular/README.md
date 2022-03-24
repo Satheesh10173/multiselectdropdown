@@ -5,20 +5,24 @@ Angular multiselect dropdown component for web applications. Easy to integrate a
 
 ## Getting Started
 
-# Package Features
+## Package Features
 
 dropdown with single/multiple selction option
 bind to any custom data source
 search item with custom placeholder text
 select/un-select all items
+can use images in list
 
-# Installation steps
+## Installation Steps
 
-> npm i ng-multiselect-angular
+```
+npm i ng-multiselect-angular
+```
 
-And then add it in your module (see app.module.ts):
+### And then add it in your module (see app.module.ts):
 
-> import { NgMultiselectAngularModule } from 'ng-multiselect-angular';
+```
+import { NgMultiselectAngularModule } from 'ng-multiselect-angular';
 
 @NgModule({
   imports: [
@@ -26,8 +30,9 @@ And then add it in your module (see app.module.ts):
   ]
 })
 export class AppModule {}
+```
 
-And then add it in your Component (see app.component.ts):
+### And then add it in your Component (see app.component.ts):
 
 ```
 import { Component, OnInit } from '@angular/core';
@@ -58,8 +63,30 @@ export class AppComponent implements OnInit {
       { id: 6, name: 'sriLankan', image: 'assets/images/baby.jpg', checked: false},
     ];
   }
+
+  public onSelect(data:any) {
+    console.log(data);
+  }
+  public onSelectAll(list:any) {
+    console.log(list);
+  }
+  public onUnSelectAll(list:any) {
+    console.log(list);
+  }
+  public onUnSelect(data:any) {
+    console.log(data);
+  }
 }
 ```
-And then add it in your HTML (see app.component.html):
+### And then add it in your HTML (see app.component.html):
 
-> <ng-multiselect-angular [dropdownList]="list" [selectSettings]="settings"></ng-multiselect-angular>
+```
+<ng-multiselect-angular 
+[dropdownList]="list"
+[selectSettings]="settings"
+(onSelectAll)="onSelectAll($event)"
+(onSelect)="onSelect($event)"
+(onUnSelect)="onUnSelect($event)"
+(onUnSelectAll)="onUnSelectAll($event)">
+</ng-multiselect-angular>
+```

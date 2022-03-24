@@ -2,16 +2,16 @@
     <div class="container-box">
       <span *ngIf="savedList.length == 0" class="place-holder">{{selectSettings.placeholder}}</span>
       <div class="container-list" *ngFor="let list of savedList; let i=index">
-        <div *ngIf="!selectSettings.singleSelect" class="container-list-items" [ngClass]="selectSettings.isShowImage == true ? '' : 'image-hide'">
-          <span *ngIf="selectSettings.isShowImage" class="c_image"><img  [src]="list.image" alt="image" width="100" height="100"></span>
+        <div class="container-list-items" [ngClass]="selectSettings.isShowImage == true ? '' : 'image-hide'">
+          <span *ngIf="selectSettings.isShowImage" class="c_image"><img  [src]="list.image" width="100" height="100"></span>
           {{list.name}}<span *ngIf="!selectSettings.singleSelect" (click)="onRemove(i, list)" class="close"></span>
         </div>
-        <!-- <div *ngIf="selectSettings.isCount && this.selectSettings.count && this.selectSettings.count < this.savedList.length && showCount <= i">
-            <div *ngIf="!selectSettings.singleSelect" class="container-list-items" [ngClass]="selectSettings.isShowImage == true ? '' : 'image-hide'">
+        <!-- <div *ngIf="selectSettings.isCount && this.selectSettings.count && this.selectSettings.count < this.savedList.length && showCount <= i"> -->
+            <!-- <div *ngIf="!selectSettings.singleSelect" class="container-list-items" [ngClass]="selectSettings.isShowImage == true ? '' : 'image-hide'">
                 <span *ngIf="selectSettings.isShowImage" class="c_image"><img  [src]="list.image" alt="image" width="100" height="100"></span>
                 {{list.name}}<span *ngIf="!selectSettings.singleSelect" (click)="onRemove(i, list)" class="close"></span>
-              </div>
-        </div> -->
+              </div> -->
+        <!-- </div> -->
       </div>
       <span (click)="onClickArrow(isOpen)" [ngClass]="isOpen == false ? 'arrow' : 'arrow1'"></span>
       <!-- <span *ngIf="selectSettings.isCount && this.selectSettings.count && this.selectSettings.count < this.savedList.length" class="c-count">+{{showCount}}</span> -->
@@ -30,7 +30,7 @@
         (click)="onCheckChange(!value.checked, value)" [ngClass]="value.checked == true ? 'li-active' : ''">
           <div class="li-inside">
             <input *ngIf="!selectSettings.singleSelect" type="checkbox" [checked]="value.checked" class="list-check"/>
-            <span *ngIf="selectSettings.isShowImage" ><img [src]="value.image" alt="image" width="100" height="100"></span>
+            <span *ngIf="selectSettings.isShowImage" ><img [src]="value.image" width="100" height="100"></span>
             <a class="a-name">{{value.name}}</a>
           </div>
         </li>

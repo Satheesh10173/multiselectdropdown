@@ -32,4 +32,17 @@ export class AppComponent implements OnInit {
       { id: 9, name: 'New Delhikjkh', image: 'assets/images/baby.jpg', checked: true}
     ];
   }
+
+  public onSelect(data:any) {
+    console.log(data);
+  }
+  public onSelectAll(list:any) {
+    console.log(list);
+  }
+  public onUnSelectAll(list:any) {
+    console.log(list);
+  }
+  public onUnSelect(data:any) {
+    console.log(data);
+  }
 }

@@ -1,1 +1,8 @@
-<ng-multiselect-angular [dropdownList]="list" [selectSettings]="settings"></ng-multiselect-angular>
+<ng-multiselect-angular 
+[dropdownList]="list"
+[selectSettings]="settings"
+(onSelectAll)="onSelectAll($event)"
+(onSelect)="onSelect($event)"
+(onUnSelect)="onUnSelect($event)"
+(onUnSelectAll)="onUnSelectAll($event)">
+</ng-multiselect-angular>

@@ -29,9 +29,13 @@ export class NgMultiselectAngularComponent implements OnInit {
     this.isOpen = false;
   };
   @Output('onSelectAll')
-  onSelectAll: EventEmitter<Array<IListItem>> = new EventEmitter<Array<any>>();
+  onSelectAll: EventEmitter<Array<IListItem>> = new EventEmitter<Array<IListItem>>();
   @Output('onSelect')
   onSelect: EventEmitter<IListItem> = new EventEmitter<IListItem>();
+  @Output('onUnSelectAll')
+  onUnSelectAll: EventEmitter<Array<IListItem>> = new EventEmitter<Array<IListItem>>();
+  @Output('onSelect')
+  onUnSelect: EventEmitter<IListItem> = new EventEmitter<IListItem>();
   constructor() {
   }
   ngOnInit(): void {
@@ -93,6 +97,9 @@ export class NgMultiselectAngularComponent implements OnInit {
       this.onSelect.emit(value);
     } else {
       value.checked = true;
+      this.dropdownList.forEach((ele:any) => {
+        ele.checked = ele.id !== value.id ? false : true;
+      });
       this.savedList = [value];
       this.onSelect.emit(value);
     }
@@ -131,6 +138,11 @@ export class NgMultiselectAngularComponent implements OnInit {
       this.dropdownList.forEach((x) => x.checked = false);
     }
     this.dropdownList = this.dropdownList.map((a) => ({ ...a }));
-    this.onSelectAll.emit(this.savedList);
+    if(this.savedList.length) {
+      this.onSelectAll.emit(this.savedList);
+    } else {
+      this.onUnSelectAll.emit(this.savedList);
+    }
+    
   }
 }
