@@ -29,7 +29,8 @@ export class AppModule {}
 
 And then add it in your Component (see app.component.ts):
 
-> import { Component, OnInit } from '@angular/core';
+```
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -58,7 +59,7 @@ export class AppComponent implements OnInit {
     ];
   }
 }
-
+```
 And then add it in your HTML (see app.component.html):
 
 > <ng-multiselect-angular [dropdownList]="list" [selectSettings]="settings"></ng-multiselect-angular>
