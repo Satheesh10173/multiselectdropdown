@@ -30,7 +30,7 @@
         (click)="onCheckChange(!value.checked, value)" [ngClass]="value.checked == true ? 'li-active' : ''">
           <div class="li-inside">
             <input *ngIf="!selectSettings.singleSelect" type="checkbox" [checked]="value.checked" class="list-check"/>
-            <span *ngIf="selectSettings.isShowImage" ><img [src]="value.image" alt="Girl in a jacket" width="100" height="100"></span>
+            <span *ngIf="selectSettings.isShowImage" ><img [src]="value.image" alt="image" width="100" height="100"></span>
             <a class="a-name">{{value.name}}</a>
           </div>
         </li>

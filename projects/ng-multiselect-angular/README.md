@@ -1,24 +1,64 @@
 # NgMultiselectAngular
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
+Angular multiselect dropdown component for web applications. Easy to integrate and use. It can be bind to any custom data source.
 
-## Code scaffolding
 
-Run `ng generate component component-name --project ng-multiselect-angular` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-multiselect-angular`.
-> Note: Don't forget to add `--project ng-multiselect-angular` or else it will be added to the default project in your `angular.json` file. 
+## Getting Started
 
-## Build
+# Package Features
 
-Run `ng build ng-multiselect-angular` to build the project. The build artifacts will be stored in the `dist/` directory.
+dropdown with single/multiple selction option
+bind to any custom data source
+search item with custom placeholder text
+select/un-select all items
 
-## Publishing
+# Installation steps
 
-After building your library with `ng build ng-multiselect-angular`, go to the dist folder `cd dist/ng-multiselect-angular` and run `npm publish`.
+> npm i ng-multiselect-angular
 
-## Running unit tests
+And then add it in your module (see app.module.ts):
 
-Run `ng test ng-multiselect-angular` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> import { NgMultiselectAngularModule } from 'ng-multiselect-angular';
 
-## Further help
+@NgModule({
+  imports: [
+    NgMultiselectAngularModule
+  ]
+})
+export class AppModule {}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+And then add it in your Component (see app.component.ts):
+
+> import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent implements OnInit {
+  title = 'sample';
+  public list:any[]=[];
+  public settings = {
+    isSearch: false,
+    placeholder: 'Select Country',
+    isSelectAll: true,
+    isShowImage: true,
+    singleSelect: true
+  };
+
+  ngOnInit(): void {
+    this.list = [
+      { id: 1, name: 'India', image: 'assets/images/baby.jpg', checked: false},
+      { id: 2, name: 'Us', image: 'assets/images/baby.jpg', checked: true },
+      { id: 3, name: 'China', image: 'assets/images/baby.jpg', checked: false},
+      { id: 4, name: 'Russia', image: 'assets/images/baby.jpg', checked: false},
+      { id: 5, name: 'Japan', image: 'assets/images/baby.jpg', checked: false},
+      { id: 6, name: 'sriLankan', image: 'assets/images/baby.jpg', checked: false},
+    ];
+  }
+}
+
+And then add it in your HTML (see app.component.html):
+
+> <ng-multiselect-angular [dropdownList]="list" [selectSettings]="settings"></ng-multiselect-angular>
