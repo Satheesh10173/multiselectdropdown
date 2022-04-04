@@ -1,11 +1,28 @@
 {
   "name": "ng-multiselect-angular",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  }
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/Satheesh10173/multiselectdropdown"
+  },
+  "keywords": [
+    "multiselect",
+    "multiselectdropdown",
+    "ng-multiselect",
+    "ng-multiselectdropdown",
+    "ng-multiselect-angular",
+    "ng-multiselect-dropdown",
+    "multiselect-angular",
+    "select",
+    "selectdropdown",
+    "image-multiselect-angular"
+  ],
+  "license": "MIT"
 }
